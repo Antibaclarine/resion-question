@@ -8,6 +8,12 @@ var add=integers(12,5)
     println(sameLetter("madam"))
    println (squares(mutableListOf(2,3,4,5,5,6)))
     println(allCharacter(mutableListOf("Mary","Clarine","Mercy","Margaret")))
+    println(hello(mutableListOf("hello","ann","mary","come")))
+    println(allproduct(mutableListOf(4,7,9,1,10)))
+    println(characters(mutableListOf("Veronica","Mary","Mercy","all")))
+    println(listOf(mutableListOf(2,3,4,5,6,7)))
+    println(lambda(mutableListOf("Alice","Joan","Jim","Ann")))
+    println(filter(mutableListOf(2,3,4,5,6,7,8,9)))
 }
 //Write a function that takes in two integers and returns their sum.
 fun integers(num1:Int,num2:Int):Int{
@@ -63,15 +69,51 @@ fun squares(num:List<Int>):Int{
 }
 //Write a function that takes in a list of strings and returns a new list containing only the strings that have a length greater than 5.
 fun characters(word:List<String>):List<String>{
-
+    var results= mutableListOf<String>()
     for (words in word){
         if (words.length>5){
-
+        results.add(words)
         }
     }
-return word
+return results
 }
 
 fun allCharacter(word: List<String>):List<String>{
     return word.filter { it.length >5 }
+}
+//Write a function that takes in a list of integers and returns the product of those integers.
+fun allproduct(num:List<Int>):Int{
+    var product=1
+    for (n in num){
+        product *=n
+
+    }
+
+    return product
+}
+//Write a function that takes in a list of strings and returns a new list containing only the strings that contain the substring "hello".
+fun hello(word: List<String>):List<String>{
+    var wordsList= mutableListOf<String>()
+    for (n in word){
+        if ("hello" in n){
+            wordsList.add(n)
+        }
+    }
+    return wordsList
+}
+fun palindrome(input:String):Boolean{
+   var reversed=input.reversed()
+    input==reversed
+    return true
+}
+fun listOf(list: List<Int>):List<Int>{
+    return list.map { it * it }
+
+}
+fun lambda(names:List<String>):Map<Char,List<String>>{
+     return names.groupBy { it.first() }.mapValues { it.value.sorted() }
+
+}
+fun filter(num: List<Int>):List<Int>{
+   return num.filter { it %2 ==0}.map { it*10 }
 }
